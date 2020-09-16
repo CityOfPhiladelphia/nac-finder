@@ -6,6 +6,7 @@ The app uses the framework [Pinboard](https://github.com/CityOfPhiladelphia/pinb
 
 ![](https://mapboard-images.s3.amazonaws.com/pinboard/covid-testing-finder.JPG)
 
+
 ## Project setup
 ```
 yarn install
