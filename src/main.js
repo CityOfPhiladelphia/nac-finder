@@ -6,10 +6,10 @@
 // if that is not needed, we can move this info to main.js
 
 // turn off console logging in production
-const { hostname='' } = location;
-if (hostname !== 'localhost' && !hostname.match(/(\d+\.){3}\d+/)) {
-  console.log = console.info = console.debug = console.error = function () {};
-}
+// const { hostname='' } = location;
+// if (hostname !== 'localhost' && !hostname.match(/(\d+\.){3}\d+/)) {
+//   console.log = console.info = console.debug = console.error = function () {};
+// }
 
 // Font Awesome Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
