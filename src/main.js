@@ -15,11 +15,12 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
 import { faBuilding } from '@fortawesome/free-solid-svg-icons/faBuilding';
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import { faUserMd } from '@fortawesome/free-solid-svg-icons/faUserMd';
 import { faCircle } from '@fortawesome/free-solid-svg-icons/faCircle';
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkAlt";
 
-library.add(faExclamationTriangle, faBuilding, faUserMd, faCircle, faExternalLinkAlt );
+library.add(faExclamationTriangle, faBuilding, faUser, faUserMd, faCircle, faExternalLinkAlt );
 
 // import pinboard
 import pinboard from '@phila/pinboard/src/main.js';
@@ -71,11 +72,14 @@ pinboard({
   app: {
     logoAlt: 'City of Philadelphia',
     type: 'nacs',
-    title: 'Neighborhood Advisory Committees (NACs)',
-    subtitle: 'It\'s actually NACs, NECs, and HCAs.',
+    title: 'Neighborhood Resources',
+    // subtitle: 'It\'s actually NACs, NECs, and HCAs.',
   },
   comboSearch: {
-    dropdown: [ 'address' ],
+    dropdown: [
+      'address',
+      // 'keyword'
+    ],
   },
   locationInfo: {
     siteName: function(item) {
@@ -95,8 +99,12 @@ pinboard({
         console.log('running HCA function, item:', item);
         return item.attributes.HCA === 'Yes';
       },
-      'Neighborhood Advisory Committee': function(item) { return item.attributes.NAC === 'Yes'; },
-      'Neighborhood Energy Center': function(item) { return item.attributes.NEC === 'Yes'; },
+      'Neighborhood Advisory Committee': function(item) {
+        return item.attributes.NAC === 'Yes'; 
+      },
+      'Neighborhood Energy Center': function(item) {
+        return item.attributes.NEC === 'Yes'; 
+      },
     },
   },
   markerType: 'circle-marker',
