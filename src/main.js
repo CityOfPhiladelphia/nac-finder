@@ -73,7 +73,7 @@ pinboard({
     logoAlt: 'City of Philadelphia',
     type: 'nacs',
     title: 'Neighborhood Resources',
-    // subtitle: 'It\'s actually NACs, NECs, and HCAs.',
+    subtitle: 'Find help with housing and utilities',
   },
   comboSearch: {
     dropdown: [
@@ -100,10 +100,10 @@ pinboard({
         return item.attributes.HCA === 'Yes';
       },
       'Neighborhood Advisory Committee': function(item) {
-        return item.attributes.NAC === 'Yes'; 
+        return item.attributes.NAC === 'Yes';
       },
       'Neighborhood Energy Center': function(item) {
-        return item.attributes.NEC === 'Yes'; 
+        return item.attributes.NEC === 'Yes';
       },
     },
   },
