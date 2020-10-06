@@ -2,7 +2,7 @@
   <div
     class="grid-y custom-greeting"
   >
-    <div class="exclamation-holder">
+    <!-- <div class="exclamation-holder">
       <font-awesome-icon
         icon="info-circle"
         class="fa-3x fa-icon-class"
@@ -13,7 +13,7 @@
         <div><b>{{ $t('beforeYouGo') }}:</b></div>
         <div>Access Centers are free, but you must check eligibility and register your child in advance. For full program details, visit the <a href="https://www.phila.gov/access-centers">Access Centers webpage</a>. </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="open-list-div">
       <!-- class="button open-list-button hide-for-medium" -->
@@ -27,42 +27,27 @@
     <div
       class="main-area"
     >
-      <h1>About this finder</h1>
-      <p>This tool can help you find an Access Center in Philadelphia. </p>
-      <p>You can: </p>
+      <h1>Resources on the map</h1>
       <ul>
-        <li>Search for an Access Center by address. </li>
-        <li>Click on a map location for specific site information. </li>
-      </ul>
-      <p>
-        Access Centers help kids and their families with their internet access and childcare needs during digital learning time (weekdays from 8:00 a.m. to 4:30 p.m.). Access Centers are free, but they are NOT drop-in centers. You must check eligibility and register your child in advance. For full program details, visit the <a href="https://www.phila.gov/access-centers/">Access Centers webpage.</a>
-      </p>
-      <h2>Who is eligible </h2>
-      <p>Philadelphia students can register for an Access Center if they are: </p>
-      <ul>
-        <li>Entering kindergarten through sixth grade. </li>
-        <li>Children of caregivers working outside the home who cannot provide supervision or are not able to afford or access childcare. </li>
-      </ul>
-      <p>Access Centers provide childcare support for families without other options. Don’t qualify? Up to 35,000 eligible K-12 households who need help with in-home internet access for digital learning can learn more about their options through <a href="https://www.phila.gov/programs/phlconnected/">PHLConnectEd</a>. </p>
-      <h2>How to register </h2>
-      <p> To express interest in registering your child for an Access Center: </p>
-      <ul>
-        <li>Read the "Who is eligible" section above to confirm your child qualifies. </li>
         <li>
-          Fill out the <a href="https://www.cognitoforms.com/DHSOST1/AccessCenterRegistrationInterestForm">registration interest form
-            <font-awesome-icon
-              icon="external-link-alt"
-            /></a> or call (215) 709-5366. 
+          <a
+            target="_blank"
+            href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/housing-counseling/"
+          >Housing counseling agencies</a> offer services for groups and individuals. They help residents buy and maintain their homes, avoid eviction and foreclosure, and more.
+        </li>
+        <li>
+          <a
+            target="_blank"
+            href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/neighborhood-advisory-committees-nacs/"
+          >Neighborhood Advisory Committees</a> (NACs) help residents find out about City programs that could benefit them.
+        </li>
+        <li>
+          <a
+            target="_blank"
+            href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/neighborhood-energy-centers-necs/"
+          >Neighborhood Energy Centers</a> (NECs) provide information on how to save on utilities and get help paying energy bills.
         </li>
       </ul>
-      <p>Students are NOT registered until confirmed by an Access Center. If you are eligible, an Access Center team member will reach out to help you with the next step of registration. If you are not eligible, you will receive a response letting you know.</p>
-      <div
-        class="custom-callout"
-      >
-        <p class="no-margins">
-          <strong>Questions?</strong> Call (215) 709-5366 for help filling out the Access Center registration interest form, or if you need language interpretation services. Help is available Monday through Friday from 8 a.m. to 6 p.m. 
-        </p>
-      </div>
     </div> <!-- end of main-area -->
   </div>
 </template>
