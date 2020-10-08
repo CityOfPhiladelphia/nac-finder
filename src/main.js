@@ -75,6 +75,9 @@ pinboard({
     title: 'Neighborhood Resources',
     subtitle: 'Find help with housing and utilities',
   },
+  gtag: {
+    category: 'rf-nacs',
+  },
   comboSearch: {
     dropdown: [
       'address',
@@ -143,12 +146,12 @@ pinboard({
   },
   footer: {
     'HowToUse': false,
-    'OtherLinks': {
-      locations: {
-        text: 'View accessible list of site locations',
-        link: 'https://www.phila.gov/programs/access-centers/access-center-sites/#/',
-      },
-    },
+    // 'OtherLinks': {
+    //   locations: {
+    //     text: 'View accessible list of site locations',
+    //     link: 'https://www.phila.gov/programs/access-centers/access-center-sites/#/',
+    //   },
+    // },
   },
   // infoCircles: {
   //   'symptomatic': {
