@@ -69,7 +69,10 @@
     </div>
     <p>{{ servicesOffered }}</p>
 
-    <div class="menu">
+    <div
+      v-if="tags.length"
+      class="menu"
+    >
       Tags
     </div>
     {{ tags }}
@@ -137,16 +140,16 @@ export default {
     tags() {
       let tags = '';
       let valueArray = [];
-      if (this.$props.item.attributes.FORECLOSURE){
-        valueArray.push('Foreclosure');
+      // console.log('ExpandCollapseContent tags computed is running, this.$config.tags:', this.$config.tags);
+      for (let tag of this.$config.tags.tags) {
+        // console.log('tag:', tag, 'tag.field:', tag.field, 'this.$props.item.attributes[tag.field]:', this.$props.item.attributes[tag.field]);
+        if (tag.type == 'boolean' && this.$props.item.attributes[tag.field] == 'Yes') {
+          valueArray.push(tag.value);
+        } else if (tag.type == 'value' && this.$props.item.attributes[tag.field] !== null && this.$props.item.attributes[tag.field] != ' ') {
+          valueArray.push(this.$props.item.attributes[tag.field].charAt(0) + this.$props.item.attributes[tag.field].substring(1).toLowerCase());
+        }
       }
-      if (this.$props.item.attributes.PRE_PURCHASE){
-        valueArray.push('Pre-Purchase');
-      }
-      if (this.$props.item.attributes.SPECIALTY && this.$props.item.attributes.SPECIALTY != ' '){
-        valueArray.push(this.$props.item.attributes.SPECIALTY.charAt(0) + this.$props.item.attributes.SPECIALTY.substring(1).toLowerCase());
-      }
-      console.log('valueArray:', valueArray);
+      // console.log('valueArray:', valueArray);
       let i;
       if (valueArray.length >=1) {
         for (i=0; i<valueArray.length-1; i++) {

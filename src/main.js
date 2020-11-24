@@ -81,7 +81,27 @@ pinboard({
   comboSearch: {
     dropdown: [
       'address',
-      // 'keyword'
+      'keyword',
+    ],
+  },
+  tags: {
+    type: 'fieldValues',
+    tags: [
+      {
+        field: 'FORECLOSURE',
+        type: 'boolean',
+        value: 'Foreclosure',
+      },
+      {
+        field: 'PRE_PURCHASE',
+        type: 'boolean',
+        value: 'Pre-Purchase',
+      },
+      {
+        field: 'SPECIALTY',
+        type: 'value',
+        value: 'test',
+      },
     ],
   },
   locationInfo: {
