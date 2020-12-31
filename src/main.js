@@ -166,12 +166,13 @@ pinboard({
   },
   footer: {
     'HowToUse': false,
-    // 'OtherLinks': {
-    //   locations: {
-    //     text: 'DHCD Neighborhood Resources',
-    //     link: 'https://admin.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/',
-    //   },
-    // },
+    'OtherLinks': {
+      locations: {
+        text: 'View accessible list of sites',
+        link: 'https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/',
+
+      },
+    },
   },
   // infoCircles: {
   //   'symptomatic': {
