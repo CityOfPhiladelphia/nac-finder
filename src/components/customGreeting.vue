@@ -27,13 +27,14 @@
     <div
       class="main-area"
     >
-      <h1>Resources on the map</h1>
+      <h1>About this finder</h1>
       <ul>
         <li>
           <a
             target="_blank"
             href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/housing-counseling/"
-          >Housing counseling agencies</a> offer services for groups and individuals. They help residents buy and maintain their homes, avoid eviction and foreclosure, and more.
+          >Housing counseling agencies</a> help residents buy and maintain their homes, avoid eviction and foreclosure, and more.
+          .
         </li>
         <li>
           <a
@@ -46,6 +47,22 @@
             target="_blank"
             href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/neighborhood-energy-centers-necs/"
           >Neighborhood Energy Centers</a> (NECs) provide information on how to save on utilities and get help paying energy bills.
+        </li>
+      </ul>
+
+      <h2>Other programs DHCD supports</h2>
+      <ul>
+        <li>
+          The <a
+            target="_blank"
+            href="http://northcentralchoice.com/"
+          >North Central Philadelphia Transformation Plan</a>, which is part of the Choice Neighborhoods Initiative to transform neighborhoods of extreme poverty into sustainable, mixed-income communities.
+        </li>
+        <li>
+          The <a
+            target="_blank"
+            href="https://phsonline.org/programs/landcare-program"
+          >LandCare</a> program, which cleans, greens, and stabilizes vacant lots to return them to productive use.
         </li>
       </ul>
     </div> <!-- end of main-area -->

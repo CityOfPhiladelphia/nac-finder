@@ -73,7 +73,7 @@ pinboard({
     logoAlt: 'City of Philadelphia',
     type: 'nacs',
     title: 'Neighborhood Resources',
-    subtitle: 'Find help with housing and utilities',
+    subtitle: 'Find housing, repair, and utility assistance',
   },
   gtag: {
     category: 'rf-nacs',
@@ -100,7 +100,7 @@ pinboard({
       {
         field: 'SPECIALTY',
         type: 'value',
-        value: 'test',
+        // value: 'test',
       },
     ],
   },
@@ -119,7 +119,7 @@ pinboard({
     type: 'multipleFields',
     multipleFields: {
       'Housing Counseling Agency': function(item){
-        console.log('running HCA function, item:', item);
+        // console.log('running HCA function, item:', item);
         return item.attributes.HCA === 'Yes';
       },
       'Neighborhood Advisory Committee': function(item) {
@@ -168,8 +168,8 @@ pinboard({
     'HowToUse': false,
     // 'OtherLinks': {
     //   locations: {
-    //     text: 'View accessible list of site locations',
-    //     link: 'https://www.phila.gov/programs/access-centers/access-center-sites/#/',
+    //     text: 'DHCD Neighborhood Resources',
+    //     link: 'https://admin.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/',
     //   },
     // },
   },
