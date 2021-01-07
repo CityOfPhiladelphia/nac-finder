@@ -1,6 +1,6 @@
 module.exports = {
   filenameHashing: false,
-  publicPath: "nacs/prod",
+  publicPath: "/nacs/prod",
   // publicPath: "/dhcd/neighborhood-resources",
   //publicPath: "/access-centers/dev/",
   chainWebpack: (config) => {
