@@ -6,20 +6,21 @@
 // if that is not needed, we can move this info to main.js
 
 // turn off console logging in production
-const { hostname='' } = location;
-if (hostname !== 'localhost' && !hostname.match(/(\d+\.){3}\d+/)) {
-  console.log = console.info = console.debug = console.error = function () {};
-}
+// const { hostname='' } = location;
+// if (hostname !== 'localhost' && !hostname.match(/(\d+\.){3}\d+/)) {
+//   console.log = console.info = console.debug = console.error = function () {};
+// }
 
 // Font Awesome Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
 import { faBuilding } from '@fortawesome/free-solid-svg-icons/faBuilding';
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import { faUserMd } from '@fortawesome/free-solid-svg-icons/faUserMd';
 import { faCircle } from '@fortawesome/free-solid-svg-icons/faCircle';
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkAlt";
 
-library.add(faExclamationTriangle, faBuilding, faUserMd, faCircle, faExternalLinkAlt );
+library.add(faExclamationTriangle, faBuilding, faUser, faUserMd, faCircle, faExternalLinkAlt );
 
 // import pinboard
 import pinboard from '@phila/pinboard/src/main.js';
@@ -71,11 +72,37 @@ pinboard({
   app: {
     logoAlt: 'City of Philadelphia',
     type: 'nacs',
-    title: 'Neighborhood Advisory Committees (NACs)',
-    subtitle: 'It\'s actually NACs, NECs, and HCAs.',
+    title: 'Neighborhood Resources',
+    subtitle: 'Find housing, repair, and utility assistance',
+  },
+  gtag: {
+    category: 'rf-nacs',
   },
   comboSearch: {
-    dropdown: [ 'address' ],
+    dropdown: [
+      'address',
+      'keyword',
+    ],
+  },
+  tags: {
+    type: 'fieldValues',
+    tags: [
+      {
+        field: 'FORECLOSURE',
+        type: 'boolean',
+        value: 'Foreclosure',
+      },
+      {
+        field: 'PRE_PURCHASE',
+        type: 'boolean',
+        value: 'Pre-Purchase',
+      },
+      {
+        field: 'SPECIALTY',
+        type: 'value',
+        // value: 'test',
+      },
+    ],
   },
   locationInfo: {
     siteName: function(item) {
@@ -92,11 +119,15 @@ pinboard({
     type: 'multipleFields',
     multipleFields: {
       'Housing Counseling Agency': function(item){
-        console.log('running HCA function, item:', item);
+        // console.log('running HCA function, item:', item);
         return item.attributes.HCA === 'Yes';
       },
-      'Neighborhood Advisory Committee': function(item) { return item.attributes.NAC === 'Yes'; },
-      'Neighborhood Energy Center': function(item) { return item.attributes.NEC === 'Yes'; },
+      'Neighborhood Advisory Committee': function(item) {
+        return item.attributes.NAC === 'Yes';
+      },
+      'Neighborhood Energy Center': function(item) {
+        return item.attributes.NEC === 'Yes';
+      },
     },
   },
   markerType: 'circle-marker',
@@ -137,8 +168,9 @@ pinboard({
     'HowToUse': false,
     'OtherLinks': {
       locations: {
-        text: 'View accessible list of site locations',
-        link: 'https://www.phila.gov/programs/access-centers/access-center-sites/#/',
+        text: 'View accessible list of sites',
+        link: 'https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/',
+
       },
     },
   },

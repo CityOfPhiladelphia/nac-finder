@@ -1,6 +1,6 @@
 module.exports = {
   filenameHashing: false,
-  publicPath: "/nac-finder/",
+  publicPath: "/nacs/dev/",
   //publicPath: "/access-centers/dev/",
   chainWebpack: (config) => {
     config.resolve.symlinks(false);

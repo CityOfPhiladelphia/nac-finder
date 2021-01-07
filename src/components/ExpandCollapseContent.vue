@@ -1,69 +1,83 @@
 <template>
   <div>
-  <!-- <div class="grid-x grid-padding-x">
-    <div class="cell medium-12"> -->
-
     <div class="grid-x grid-padding-x">
       <div class="cell medium-12">
-
-        <font-awesome-icon icon="map-marker-alt" />
-        <span>
-          {{ item.attributes.STREET_ADDRESS }}<br>
-          Philadelphia, PA {{ item.attributes.ZIP_CODE }}<br>
-        </span><br>
-        <!-- {{ item.attributes.STREET_ADDRESS }}<br>
-        Philadelphia, PA {{ item.attributes.ZIP_CODE }} <br> -->
-
-        <font-awesome-icon icon="phone" />
-        <span>
-          {{ item.attributes.PHONE_NUMBER }}<br>
-        </span><br>
-
+        <div
+          v-if="item.attributes.STREET_ADDRESS"
+          class="grid-x detail"
+        >
+          <div class="small-2">
+            <font-awesome-icon icon="map-marker-alt" />
+          </div>
+          <div class="small-22">
+            {{ item.attributes.STREET_ADDRESS }}<br>
+            Philadelphila, PA {{ item.attributes.ZIP_CODE }}
+          </div>
+        </div>
       </div>
       <div class="cell medium-12">
-         Website: <a target="_blank" :href="makeValidUrl(item.attributes.WEBSITE_URL)">{{ item.attributes.WEBSITE_URL }}</a>
+        <div
+          v-if="item.attributes.WEBSITE_URL"
+          class="grid-x detail"
+        >
+          <div class="small-2">
+            <font-awesome-icon icon="globe" />
+          </div>
+          <div class="small-22">
+            <a
+              target="_blank"
+              :href="item.attributes.WEBSITE_URL"
+            >{{ item.attributes.WEBSITE_URL }}</a>
+          </div>
+        </div>
+
+        <div
+          v-if="item.attributes.PHONE_NUMBER"
+          class="grid-x detail"
+        >
+          <div class="small-2">
+            <font-awesome-icon icon="phone" />
+          </div>
+          <div class="small-22">
+            {{ item.attributes.PHONE_NUMBER }}
+          </div>
+        </div>
+
+        <div
+          v-if="item.attributes.NAC_COORDINATOR || item.attributes.EMAIL_ADDRESS"
+          class="grid-x detail"
+        >
+          <div class="small-2">
+            <font-awesome-icon icon="user" />
+          </div>
+          <div class="small-22">
+            <div v-if="item.attributes.NAC_COORDINATOR">
+              {{ item.attributes.NAC_COORDINATOR }}
+            </div>
+            <a
+              v-if="item.attributes.EMAIL_ADDRESS"
+              target="_blank"
+              :href="'mailto:' + item.attributes.EMAIL_ADDRESS"
+            >{{ item.attributes.EMAIL_ADDRESS }}</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <h3 class="h4">
-      Type
-    </h3>
-    <div class="grid-x grid-padding-x">
-      <div
-        v-if="item.attributes.HCA"
-        class="small-24"
-      >
-        Housing Counseling Agency
-      </div>
-      <div
-        v-if="item.attributes.NAC"
-        class="small-24"
-      >
-        Neighborhood Advisory Committee
-      </div>
-      <div
-        v-if="item.attributes.NEC"
-        class="small-24"
-      >
-        Neighborhood Energy Center
-      </div>
+    <div class="menu">
+      Service offered
     </div>
-    <br>
+    <p>{{ servicesOffered }}</p>
 
-    <h3
-      v-if="item.attributes.SPECIALTY"
-      class="h4"
+    <div
+      v-if="tags.length"
+      class="menu"
     >
-      Specialty
-    </h3>
-    <div class="grid-x grid-padding-x">
-      <div class="small-12">
-        {{ item.attributes.SPECIALTY.charAt(0) + item.attributes.SPECIALTY.substring(1).toLowerCase() }}
-      </div>
+      Tags
     </div>
-    <br>
+    {{ tags }}
 
-    <h3 class="h4">
+    <!-- <h3 class="h5">
       Services Offered
     </h3>
     <div class="grid-x grid-padding-x">
@@ -79,10 +93,8 @@
       >
         Pre-Purchase
       </div>
-    </div>
-
+    </div> -->
   </div>
-
 </template>
 
 <script>
@@ -104,130 +116,58 @@ export default {
     },
   },
   computed: {
-    mainVerticalTableSlots() {
-      let slots = {
-        id: 'mainTable',
-        fields: [
-          {
-            label: 'eligibility',
-            labelType: 'i18n',
-            valueType: 'component1',
-          },
-        ],
-      };
-      if (this.days.length > 0) {
-        let newField = {
-          label: 'testingHours',
-          labelType: 'i18n',
-          valueType: 'component2',
-        };
-        slots.fields.push(newField);
+    servicesOffered() {
+      let services = '';
+      let valueArray = [];
+      if (this.$props.item.attributes.HCA){
+        valueArray.push('Housing Counseling');
       }
-
-      return slots;
+      if (this.$props.item.attributes.NAC){
+        valueArray.push('Neighborhood Advisory Committees (NACs)');
+      }
+      if (this.$props.item.attributes.NEC){
+        valueArray.push('Neighborhood Energy Centers (NECs)');
+      }
+      // console.log('valueArray:', valueArray);
+      let i;
+      for (i=0; i<valueArray.length-1; i++) {
+        services += valueArray[i];
+        services += ', ';
+      }
+      services += valueArray[valueArray.length-1];
+      return services;
     },
-    mainVerticalTableOptions() {
-      return {
-        styles: {
-          th: {
-            'vertical-align': 'top',
-            'font-size': '14px',
-            'min-width': '40px !important',
-            'max-width': '50px !important',
-            'width': '10% !important',
-          },
-          td: {
-            'font-size': '14px !important',
-          },
-        },
-      };
-    },
-
-    days() {
-      let allDays = [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ];
-      let theFields = [];
-      // let days = {};
-
-      let item = this.item;
-      let holidays = [];
-      let exceptions = [];
-      if (this.$config.holidays && this.$config.holidays.days) {
-        holidays = this.$config.holidays.days;
-      }
-      if (this.$config.holidays && this.$config.holidays.exceptions) {
-        exceptions = this.$config.holidays.exceptions;
-      }
-      // let siteName = this.getSiteName(this.item);
-
-      for (let [ index, day ] of allDays.entries()) {
-        let normallyOpen = item.attributes[day] != null;
-        let holidayToday = holidays.includes(day);
-        let yesterday = allDays[index-1];
-        let normallyOpenYesterday = item.attributes[yesterday] != null;
-        let holidayYesterday = holidays.includes(yesterday);
-        let siteIsException = exceptions.includes(this.getSiteName(this.item));
-
-        // if (this.item.attributes[day] != null){
-        if ((normallyOpen || (!siteIsException && holidayYesterday && normallyOpenYesterday)) && (!holidayToday || siteIsException)) {
-
-          let hours;
-          if ((normallyOpen && !holidayToday) || (normallyOpen && siteIsException)) {
-            hours = item.attributes[day];
-          } else if (!normallyOpen && holidayYesterday) {
-            hours = item.attributes[yesterday];
-          }
-
-          let dayObject = {
-            label: day,
-            labelType: 'i18n',
-            value: hours,
-            // valueType: 'i18n',
-          };
-          theFields.push(dayObject);
+    tags() {
+      let tags = '';
+      let valueArray = [];
+      // console.log('ExpandCollapseContent tags computed is running, this.$config.tags:', this.$config.tags);
+      for (let tag of this.$config.tags.tags) {
+        // console.log('tag:', tag, 'tag.field:', tag.field, 'this.$props.item.attributes[tag.field]:', this.$props.item.attributes[tag.field]);
+        if (tag.type == 'boolean' && this.$props.item.attributes[tag.field] == 'Yes') {
+          valueArray.push(tag.value);
+        } else if (tag.type == 'value' && this.$props.item.attributes[tag.field] !== null && this.$props.item.attributes[tag.field] != ' ') {
+          valueArray.push(this.$props.item.attributes[tag.field].charAt(0) + this.$props.item.attributes[tag.field].substring(1).toLowerCase());
         }
       }
-      return theFields;
+      // console.log('valueArray:', valueArray);
+      let i;
+      if (valueArray.length >=1) {
+        for (i=0; i<valueArray.length-1; i++) {
+          tags += valueArray[i];
+          tags += ', ';
+        }
+        tags += valueArray[valueArray.length-1];
+      }
+      return tags;
     },
-    component1VerticalTableSlots() {
-      return {
-        id: 'compTable1',
-        fields: this.days,
-      };
-    },
-    component1VerticalTableOptions() {
-      return {
-        styles: {
-          th: {
-            'font-size': '14px',
-            'min-width': '45px !important',
-            'max-width': '50px !important',
-            'width': '25% !important',
-          },
-          td: {
-            'font-size': '14px !important',
-          },
-        },
-      };
-    },
-
   },
   methods: {
-    parseAddress(address) {
-      const formattedAddress = address.replace(/(Phila.+)/g, city => `<div>${city}</div>`).replace(/^\d+\s[A-z]+\s[A-z]+/g, lineOne => `<div>${lineOne}</div>`).replace(/,/, '');
-      return formattedAddress;
-    },
-    makeValidUrl(url) {
-      let newUrl = window.decodeURIComponent(url);
-      newUrl = newUrl
-        .trim()
-        .replace(/\s/g, '');
-      if (/^(:\/\/)/.test(newUrl)) {
-        return `http${newUrl}`;
+    parseSpecialty(item) {
+      let value;
+      if (item.attributes.SPECIALTY) {
+        value = item.attributes.SPECIALTY.charAt(0) + item.attributes.SPECIALTY.substring(1).toLowerCase();
       }
-      if (!/^(f|ht)tps?:\/\//i.test(newUrl)) {
-        return `http://${newUrl}`;
-      }
-      return newUrl;
+      return value;
     },
   },
 };
@@ -235,6 +175,11 @@ export default {
 </script>
 
 <style lang="scss">
+
+.menu {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
 
 .td-style {
   font-size: 14px !important;
