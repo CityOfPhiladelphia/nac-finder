@@ -1,7 +1,7 @@
 module.exports = {
   filenameHashing: false,
-  // publicPath: "/nacs/prod",
-  publicPath: "/dhcd/neighborhood-resources",
+  publicPath: "/nacs/dev",
+  // publicPath: "/dhcd/neighborhood-resources",
   chainWebpack: (config) => {
     config.resolve.symlinks(false);
   },
