@@ -83,6 +83,7 @@ pinboard({
       'address',
       'keyword',
     ],
+    searchDistance: 2,
   },
   tags: {
     type: 'fieldValues',

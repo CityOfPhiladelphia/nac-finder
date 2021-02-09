@@ -123,10 +123,10 @@ export default {
         valueArray.push('Housing Counseling');
       }
       if (this.$props.item.attributes.NAC){
-        valueArray.push('Neighborhood Advisory Committees (NACs)');
+        valueArray.push('Neighborhood Advisory Committees (NAC)');
       }
       if (this.$props.item.attributes.NEC){
-        valueArray.push('Neighborhood Energy Centers (NECs)');
+        valueArray.push('Neighborhood Energy Centers (NEC)');
       }
       // console.log('valueArray:', valueArray);
       let i;
