@@ -71,17 +71,17 @@
 
 <script>
 
-import TopicComponent from '@phila/vue-comps/src/components/TopicComponent.vue';
+// import TopicComponent from '@phila/vue-comps/src/components/TopicComponent.vue';
 import PhilaButton from '@phila/pinboard/src/components/PhilaButton.vue';
-import callout from '@phila/vue-comps/src/components/Callout.vue';
+// import callout from '@phila/vue-comps/src/components/Callout.vue';
 
 export default {
   name: 'CustomGreeting',
   components: {
     PhilaButton,
-    callout,
+    // callout,
   },
-  mixins: [ TopicComponent ],
+  // mixins: [ TopicComponent ],
   props: {
     'message': {
       type: String,

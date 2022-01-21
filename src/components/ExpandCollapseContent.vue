@@ -104,7 +104,7 @@ import SharedFunctions from '@phila/pinboard/src/components/mixins/SharedFunctio
 export default {
   name: 'ExpandCollapseContent',
   components: {
-    VerticalTableLight: () => import(/* webpackChunkName: "pvc_VerticalTable3CellsLight" */'@phila/vue-comps/src/components/VerticalTableLight.vue'),
+    // VerticalTableLight: () => import(/* webpackChunkName: "pvc_VerticalTable3CellsLight" */'@phila/vue-comps/src/components/VerticalTableLight.vue'),
   },
   mixins: [ SharedFunctions ],
   props: {
