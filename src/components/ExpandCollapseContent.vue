@@ -63,37 +63,29 @@
       </div>
     </div>
 
-    <div class="zone">
+    <div class="menu">
       <h3 class="title section-title is-3">
         Service offered
       </h3>
       <p>{{ servicesOffered }}</p>
     </div>
 
-    <div class="zone">
-      <div
-        v-if="tags.length"
-        class="menu"
-      >
-        <h3 class="title section-title is-3">
-          Tags
-        </h3>
-        {{ tags }}
-      </div>
+    <div
+      v-if="tags.length"
+      class="menu"
+    >
+      <h3 class="title section-title is-3">
+        Tags
+      </h3>
+      {{ tags }}
     </div>
   </div>
 </template>
 
 <script>
 
-import SharedFunctions from '@phila/pinboard/src/components/mixins/SharedFunctions.vue';
-
 export default {
   name: 'ExpandCollapseContent',
-  components: {
-    // VerticalTableLight: () => import(/* webpackChunkName: "pvc_VerticalTable3CellsLight" */'@phila/vue-comps/src/components/VerticalTableLight.vue'),
-  },
-  mixins: [ SharedFunctions ],
   props: {
     item: {
       type: Object,
@@ -163,92 +155,9 @@ export default {
 
 <style lang="scss">
 
-.zone {
-  padding-bottom: 10px;
-}
-
 .menu {
   font-size: 16px;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
 }
 
-.td-style {
-  font-size: 14px !important;
-}
-
-.td-textbox {
-  padding-left: 2rem;
-}
-
-.location-item {
-  position: relative;
-  border-bottom: 1px solid black;
-  height:100%;
-
-  &:hover::after {
-    color: white;
-  }
-
-  .temp-close-section {
-    width: 100%;
-  }
-
-  .card-exclamation-holder {
-    padding: 20px;
-    background-color: #CC3000;
-    text-align: center;
-  }
-
-  .fa-icon-class {
-    color: white;
-    text-align: center;
-  }
-
-  .card-exclamation-details {
-    padding: 10px;
-    background-color: #F5D6CC;
-  }
-
-  .location-title {
-    cursor: pointer;
-    padding: 1rem;
-    margin-bottom: 0;
-    &:hover{
-      background: #2176d2;
-      color: white;
-    }
-  }
-
-  &::after{
-    position: absolute;
-    right:1rem;
-    top: 0;
-    content: '+';
-    font-weight: 900;
-    font-size:1.5rem;
-    z-index: 100;
-    color: color(dark-ben-franklin)
-  }
-  &.open{
-    h2{
-      color:white;
-      background-color: color(ben-franklin-blue);
-      font-weight: 900;
-    }
-    &::after{
-      content: '-';
-      color:white;
-    }
-  }
-  .location-content{
-    overflow: hidden;
-    height:0;
-
-    &.location-open{
-      padding: 1rem;
-      height: 100%;
-      overflow: initial;
-    }
-  }
-}
 </style>
