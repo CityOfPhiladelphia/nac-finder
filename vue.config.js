@@ -1,7 +1,7 @@
 module.exports = {
   filenameHashing: false,
-  // publicPath: "/nacs/dev",
-  publicPath: "/dhcd/neighborhood-resources",
+  publicPath: "/nacs/dev",
+  // publicPath: "/dhcd/neighborhood-resources",
   configureWebpack: {
     optimization: {
       splitChunks: {
