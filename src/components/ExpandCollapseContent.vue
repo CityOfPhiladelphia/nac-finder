@@ -1,29 +1,28 @@
 <template>
-  <div>
-    <div class="grid-x grid-padding-x">
-      <div class="cell medium-12">
-        <div
-          v-if="item.attributes.STREET_ADDRESS"
-          class="grid-x detail"
-        >
-          <div class="small-2">
-            <font-awesome-icon icon="map-marker-alt" />
-          </div>
-          <div class="small-22">
-            {{ item.attributes.STREET_ADDRESS }}<br>
-            Philadelphila, PA {{ item.attributes.ZIP_CODE }}
-          </div>
+  <div class="grid-x grid-padding-x">
+    <div class="columns is-marginless">
+      <div
+        v-if="item.attributes.STREET_ADDRESS"
+        class="column columns"
+      >
+        <div class="column is-1">
+          <font-awesome-icon icon="map-marker-alt" />
+        </div>
+        <div class="column is-11">
+          {{ item.attributes.STREET_ADDRESS }}<br>
+          Philadelphila, PA {{ item.attributes.ZIP_CODE }}
         </div>
       </div>
-      <div class="cell medium-12">
+
+      <div class="column">
         <div
           v-if="item.attributes.WEBSITE_URL"
-          class="grid-x detail"
+          class="detail columns"
         >
-          <div class="small-2">
+          <div class="column is-2">
             <font-awesome-icon icon="globe" />
           </div>
-          <div class="small-22">
+          <div class="column is-10">
             <a
               target="_blank"
               :href="item.attributes.WEBSITE_URL"
@@ -33,24 +32,24 @@
 
         <div
           v-if="item.attributes.PHONE_NUMBER"
-          class="grid-x detail"
+          class="detail columns"
         >
-          <div class="small-2">
+          <div class="column is-2">
             <font-awesome-icon icon="phone" />
           </div>
-          <div class="small-22">
+          <div class="column is-10">
             {{ item.attributes.PHONE_NUMBER }}
           </div>
         </div>
 
         <div
           v-if="item.attributes.NAC_COORDINATOR || item.attributes.EMAIL_ADDRESS"
-          class="grid-x detail"
+          class="detail columns"
         >
-          <div class="small-2">
+          <div class="column is-2">
             <font-awesome-icon icon="user" />
           </div>
-          <div class="small-22">
+          <div class="column is-10">
             <div v-if="item.attributes.NAC_COORDINATOR">
               {{ item.attributes.NAC_COORDINATOR }}
             </div>
@@ -64,36 +63,24 @@
       </div>
     </div>
 
-    <div class="menu">
-      Service offered
+    <div class="zone">
+      <h3 class="title section-title is-3">
+        Service offered
+      </h3>
+      <p>{{ servicesOffered }}</p>
     </div>
-    <p>{{ servicesOffered }}</p>
 
-    <div
-      v-if="tags.length"
-      class="menu"
-    >
-      Tags
+    <div class="zone">
+      <div
+        v-if="tags.length"
+        class="menu"
+      >
+        <h3 class="title section-title is-3">
+          Tags
+        </h3>
+        {{ tags }}
+      </div>
     </div>
-    {{ tags }}
-
-    <!-- <h3 class="h5">
-      Services Offered
-    </h3>
-    <div class="grid-x grid-padding-x">
-      <div
-        v-if="item.attributes.FORECLOSURE"
-        class="small-12"
-      >
-        Foreclosure
-      </div>
-      <div
-        v-if="item.attributes.PRE_PURCHASE"
-        class="small-12"
-      >
-        Pre-Purchase
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -175,6 +162,10 @@ export default {
 </script>
 
 <style lang="scss">
+
+.zone {
+  padding-bottom: 10px;
+}
 
 .menu {
   font-size: 16px;

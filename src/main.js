@@ -154,12 +154,12 @@ pinboard({
   },
   cyclomedia: {
     enabled: false,
-    measurementAllowed: false,
-    popoutAble: true,
-    recordingsUrl: 'https://atlas.cyclomedia.com/Recordings/wfs',
-    username: process.env.VUE_APP_CYCLOMEDIA_USERNAME,
-    password: process.env.VUE_APP_CYCLOMEDIA_PASSWORD,
-    apiKey: process.env.VUE_APP_CYCLOMEDIA_API_KEY,
+    // measurementAllowed: false,
+    // popoutAble: true,
+    // recordingsUrl: 'https://atlas.cyclomedia.com/Recordings/wfs',
+    // username: process.env.VUE_APP_CYCLOMEDIA_USERNAME,
+    // password: process.env.VUE_APP_CYCLOMEDIA_PASSWORD,
+    // apiKey: process.env.VUE_APP_CYCLOMEDIA_API_KEY,
   },
   dataSources: {
     nacs,
@@ -174,6 +174,7 @@ pinboard({
       return `//api.phila.gov/finder/v1/search/${inputEncoded}`;
     },
     params: {
+      // gatekeeperKey: process.env.VUE_APP_GATEKEEPER_KEY,
       include_units: true,
     },
   },
