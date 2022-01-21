@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid-y custom-greeting"
+    class="content"
   >
     <!-- <div class="exclamation-holder">
       <font-awesome-icon
@@ -15,56 +15,60 @@
       </div>
     </div> -->
 
-    <div class="open-list-div">
-      <!-- class="button open-list-button hide-for-medium" -->
-      <phila-button
-        class="button open-list-button"
-        @click.native="$emit('view-list')"
+    <div class="section has-text-centered">
+      <button
+        class="button open-list-button is-primary"
+        @click="$emit('view-list')"
         v-html="$t('app.viewList')"
       />
     </div>
 
-    <div
-      class="main-area"
-    >
-      <h1>About this finder</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/housing-counseling/"
-          >Housing counseling agencies</a> help residents buy and maintain their homes, avoid eviction and foreclosure, and more.
-          .
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/neighborhood-advisory-committees-nacs/"
-          >Neighborhood Advisory Committees</a> (NACs) help residents find out about City programs that could benefit them.
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/neighborhood-energy-centers-necs/"
-          >Neighborhood Energy Centers</a> (NECs) provide information on how to save on utilities and get help paying energy bills.
-        </li>
-      </ul>
+    <div class="section">
+      <h1 class="title is-2 is-spaced">
+        About this finder
+      </h1>
+      <div class="app-list">
+        <ul>
+          <li>
+            <a
+              target="_blank"
+              href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/housing-counseling/"
+            >Housing counseling agencies</a> help residents buy and maintain their homes, avoid eviction and foreclosure, and more.
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/neighborhood-advisory-committees-nacs/"
+            >Neighborhood Advisory Committees</a> (NACs) help residents find out about City programs that could benefit them.
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/neighborhood-energy-centers-necs/"
+            >Neighborhood Energy Centers</a> (NECs) provide information on how to save on utilities and get help paying energy bills.
+          </li>
+        </ul>
+      </div>
 
-      <h2>Other programs DHCD supports</h2>
-      <ul>
-        <li>
-          The <a
-            target="_blank"
-            href="http://northcentralchoice.com/"
-          >North Central Philadelphia Transformation Plan</a>, which is part of the Choice Neighborhoods Initiative to transform neighborhoods of extreme poverty into sustainable, mixed-income communities.
-        </li>
-        <li>
-          The <a
-            target="_blank"
-            href="https://phsonline.org/programs/landcare-program"
-          >LandCare</a> program, which cleans, greens, and stabilizes vacant lots to return them to productive use.
-        </li>
-      </ul>
+      <h1 class="title is-2">
+        Other programs DHCD supports
+      </h1>
+      <div class="app-list">
+        <ul>
+          <li>
+            The <a
+              target="_blank"
+              href="http://northcentralchoice.com/"
+            >North Central Philadelphia Transformation Plan</a>, which is part of the Choice Neighborhoods Initiative to transform neighborhoods of extreme poverty into sustainable, mixed-income communities.
+          </li>
+          <li>
+            The <a
+              target="_blank"
+              href="https://phsonline.org/programs/landcare-program"
+            >LandCare</a> program, which cleans, greens, and stabilizes vacant lots to return them to productive use.
+          </li>
+        </ul>
+      </div>
     </div> <!-- end of main-area -->
   </div>
 </template>
@@ -201,90 +205,16 @@ export default {
 
 <style scoped>
 
-  h1 {
-    font-size: 20px;
-  }
+.section {
+  padding: 1.5rem;
+}
 
-  h2 {
-    font-size: 16px;
-  }
+.app-list {
+  margin-bottom: 2rem;
+}
 
-  .main-area {
-    padding: 10px;
-  }
+.open-list-button {
+  text-transform: uppercase;
+}
 
-  .custom-callout {
-    border-style: solid;
-    border-width: 1px;
-    padding: 10px;
-  }
-
-  .no-margin {
-    margin: 0px;
-  }
-
-  .open-list-div {
-    margin: 0 auto;
-  }
-
-  .open-list-button {
-    margin-top: 6px;
-    margin-bottom: 14px;
-    width: 200px;
-  }
-
-  .custom-greeting {
-    padding: 12px;
-  }
-
-  .exclamation-holder {
-    display: flex;
-    align-items: center;
-    margin-top: 6px;
-    margin-bottom: 14px;
-  }
-
-  .fa-icon-class {
-    margin: 0 auto;
-    display: block;
-  }
-
-  .exclamation-details {
-    margin-left: 14px;
-    font-size: 14px;
-  }
-
-  .mb-panel-topics-greeting {
-    padding-top: 20px;
-  }
-
-  .greeting {
-    font-size: 20px;
-    color: #444;
-    padding: 14px;
-  }
-
-  .greeting-error {
-    border-left-color: #ff0000;
-  }
-
-  .custom-section {
-    margin-left: 8px;
-    margin-top: 4px;
-  }
-
-  .custom-ul {
-    margin-left: 4rem;
-    font-size: 14px;
-  }
-
-  /*medium*/
-  @media screen and (min-width: 750px) {
-    .mb-panel-topics-greeting {
-      /*make this scroll on medium screens*/
-      /*REVIEW this is a little hacky. the 120px shouldn't be hard-coded.*/
-      height: calc(100vh - 120px);
-      overflow: auto;
-    }
-  }
 </style>
