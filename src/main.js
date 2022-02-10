@@ -29,7 +29,7 @@ import pinboard from '@phila/pinboard/src/main.js';
 // data-sources
 import nacs from './data-sources/nacs';
 // import compiled from './data-sources/compiled';
-var BASE_CONFIG_URL = 'https://cdn.jsdelivr.net/gh/cityofphiladelphia/mapboard-default-base-config@6126861722cee9384694742363d1661e771493b9/config.js';
+// var BASE_CONFIG_URL = 'https://cdn.jsdelivr.net/gh/cityofphiladelphia/mapboard-default-base-config@6126861722cee9384694742363d1661e771493b9/config.js';
 
 import expandCollapseContent from './components/ExpandCollapseContent.vue';
 import customGreeting from './components/customGreeting.vue';
@@ -71,20 +71,37 @@ pinboard({
     ],
   },
   app: {
-    logoAlt: 'City of Philadelphia',
-    type: 'nacs',
     title: 'Neighborhood Resources',
     subtitle: 'Find housing, repair, and utility assistance',
+    logoAlt: 'City of Philadelphia',
+    type: 'nacs',
   },
   gtag: {
     category: 'rf-nacs',
   },
-  comboSearch: {
+  resetDataOnGeocode: true,
+  addressInput: {
+    placeholder: 'Search by address or keyword',
+  },
+  searchBar: {
     dropdown: [
       'address',
       'keyword',
     ],
-    searchDistance: 2,
+    labelText:  {
+      address: 'Search by address',
+      keyword: 'Search by keyword',
+    },
+    placeholderText: {
+      address: 'Search by address',
+      keyword: 'Search by keyword',
+    },
+  },
+  locationInfo: {
+    siteName: function(item) {
+      // console.log(`  locationInfo:`, item );
+      return item.attributes.AGENCY;
+    },
   },
   tags: {
     type: 'fieldValues',
@@ -106,14 +123,8 @@ pinboard({
       },
     ],
   },
-  locationInfo: {
-    siteName: function(item) {
-      // console.log(`  locationInfo:`, item );
-      return item.attributes.AGENCY;
-    },
-  },
   customComps,
-  baseConfig: BASE_CONFIG_URL,
+  // baseConfig: BASE_CONFIG_URL,
   // holidays: {
   //   days: ['Monday'],
   // },
@@ -143,12 +154,12 @@ pinboard({
   },
   cyclomedia: {
     enabled: false,
-    measurementAllowed: false,
-    popoutAble: true,
-    recordingsUrl: 'https://atlas.cyclomedia.com/Recordings/wfs',
-    username: process.env.VUE_APP_CYCLOMEDIA_USERNAME,
-    password: process.env.VUE_APP_CYCLOMEDIA_PASSWORD,
-    apiKey: process.env.VUE_APP_CYCLOMEDIA_API_KEY,
+    // measurementAllowed: false,
+    // popoutAble: true,
+    // recordingsUrl: 'https://atlas.cyclomedia.com/Recordings/wfs',
+    // username: process.env.VUE_APP_CYCLOMEDIA_USERNAME,
+    // password: process.env.VUE_APP_CYCLOMEDIA_PASSWORD,
+    // apiKey: process.env.VUE_APP_CYCLOMEDIA_API_KEY,
   },
   dataSources: {
     nacs,
@@ -163,19 +174,41 @@ pinboard({
       return `//api.phila.gov/finder/v1/search/${inputEncoded}`;
     },
     params: {
+      // gatekeeperKey: process.env.VUE_APP_GATEKEEPER_KEY,
       include_units: true,
     },
   },
-  footer: {
-    'HowToUse': false,
-    'OtherLinks': {
-      locations: {
-        text: 'View accessible list of sites',
-        link: 'https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/',
-
+  footer: [
+    {
+      type: "native",
+      href: "https://www.phila.gov/",
+      attrs: {
+        target: "_blank",
       },
+      text: "City of Philadelphia",
     },
-  },
+    {
+      type: "native",
+      href: "/oia/resource-finder",
+      text: "About",
+    },
+    {
+      type: "native",
+      href: "https://www.phila.gov/feedback/",
+      attrs: {
+        target: "_blank",
+      },
+      text: "Feedback",
+    },
+    {
+      type: "native",
+      href: 'https://www.phila.gov/departments/division-of-housing-and-community-development/neighborhood-resources/',
+      attrs: {
+        target: "_blank",
+      },
+      text: 'View accessible list of sites',
+    },
+  ],
   // infoCircles: {
   //   'symptomatic': {
   //     'html': '\
