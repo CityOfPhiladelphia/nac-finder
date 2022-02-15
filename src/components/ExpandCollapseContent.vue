@@ -64,7 +64,7 @@
     </div>
 
     <div class="menu">
-      <h3 class="title section-title is-3">
+      <h3 class="title section-title is-4">
         Service offered
       </h3>
       <p>{{ servicesOffered }}</p>
@@ -74,7 +74,7 @@
       v-if="tags.length"
       class="menu"
     >
-      <h3 class="title section-title is-3">
+      <h3 class="title section-title is-4">
         Tags
       </h3>
       {{ tags }}
