@@ -1,10 +1,10 @@
 # Neighborhood Advisory Committees (NACS) Finder
 
+This repo was archived on 8/19/2022.
+
 This is the sourcecode for the NAC finder app.
 
 The app uses the framework [Pinboard](https://github.com/CityOfPhiladelphia/pinboard), in npm as [@phila/pinboard](https://www.npmjs.com/package/@phila/pinboard).
-
-![](https://mapboard-images.s3.amazonaws.com/pinboard/covid-testing-finder.JPG)
 
 
 ## Project setup
